@@ -1,7 +1,9 @@
-PREFIX ?= /usr/local
-LIBDIR ?= lib
+PREFIX ?= /usr
+LIBDIR ?= lib64
 BINDIR ?= bin
-HAVE_DGL ?= true
+HAVE_DGL = false
+HAVE_CAIRO = false
+HAVE_OPENGL = false
 
 NAME    = zam-plugins
 VERSION = $(shell cat .version)
@@ -9,6 +11,11 @@ VERSION = $(shell cat .version)
 PLUGINS=ZamComp ZamCompX2 ZaMultiComp ZamTube ZamEQ2 ZamAutoSat ZamGEQ31 ZaMultiCompX2 ZamGate ZamGateX2 ZamHeadX2 ZaMaximX2 ZamDelay ZamDynamicEQ ZamPhono ZamVerb ZamGrains
 
 include dpf/Makefile.base.mk
+
+USE_SYSTEM_LIBS = 1
+SKIP_STRIPPING = true
+HAVE_ZITA_CONVOLVER = true
+VERBOSE = true
 
 # --------------------------------------------------------------
 

@@ -33,7 +33,7 @@ include ../../dpf/Makefile.plugins.mk
 
 ifeq ($(HAVE_ZITA_CONVOLVER),true)
 BASE_FLAGS += -DHAVE_ZITA_CONVOLVER
-LINK_FLAGS += -lzita-convolver
+LINK_FLAGS += /usr/lib64/libzita-convolver.a -lm -lmvec -lc
 else
 include ../zita-convolver.mk
 endif
@@ -43,7 +43,7 @@ endif
 
 ifeq ($(LINUX),true)
 BASE_FLAGS += $(shell pkg-config --cflags samplerate fftw3f)
-LINK_FLAGS += $(shell pkg-config --libs fftw3f samplerate)
+LINK_FLAGS += /usr/lib64/libfftw3f.a /usr/lib64/libsamplerate.a -lm -lmvec -lc
 else
 BASE_FLAGS += $(shell pkg-config --static --cflags samplerate fftw3f)
 LINK_FLAGS += $(shell pkg-config --static --libs fftw3f samplerate)
